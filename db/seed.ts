@@ -4,8 +4,8 @@ export default async function seed() {
 	await db.insert(Institution).values([
 		{
 			id: 1,
-			name: 'Presidencia de la República',
-			email: 'presidencia@guatemala.gob.gt',
+			name: 'Secretaría General de la Presidencia',
+			email: 'libreacceso@sgp.gob.gt',
 			description: 'presidencia de la república'
 		}
 	])

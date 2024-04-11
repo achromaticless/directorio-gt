@@ -1,24 +1,26 @@
 ---
 import InstitutionCard from '../components/InstitutionCard.astro';
 import { db, Institution } from 'astro:db';
+
 const institutions = await db.select().from(Institution)
 ---
-
-<div class="max-w-[960px] m-auto pt-5 ">
+<div class="max-w-[960px] m-auto pt-5 grid gap-4 px-4 ">
     <div class="w-full">
-        <h1 class="text-black-100 text-4xl font-bold mb-2">Directorio del Estado de Guatemala</h1>
-        <span class="text-black-50 text-base">Los correos de las oficinas de Información Pública a un click</span>
+        <span class="text-black-50 text-base">Copia el correo de la oficina de <strong>Información Pública</strong> con un click</span>
     </div>
     <div class="w-full">
         <input
+            id="filter-input"
             type="text"
-            class="rounded bg-black-25 h-12 w-full p-4"
-            placeholder="Busca por nombre o descripción"
+            class="rounded-[12px] bg-black-25 h-12 w-full p-4 outline-none"
+            placeholder="Busca por nombre"
         >
-        {
-            institutions.map(({ name, email }) => (
-                <InstitutionCard name={name} email={ email} />
-            ))
-        }
+        <div class="pt-4">
+            {
+                institutions.map(({ name, email, id }) => (
+                    <InstitutionCard name={name} email={email} id={id} />
+                ))
+            }
+        </div>
     </div>
 </div>

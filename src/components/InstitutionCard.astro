@@ -1,13 +1,22 @@
 ---
 interface Props {
+    id: number;
     name: string;
     email: string;
 }
 
-const { name, email } = Astro.props;
+const { name, email, id } = Astro.props;
 ---
 
-<div class="">
-    <div class="text-base">{name}</div>
+<script>
+    const handleClick = () => {
+        // Attempt to copy the text to the clipboard
+        navigator.clipboard.writeText('test')
+    }
+    const card = document.getElementById(`test-card`)
+    card?.addEventListener('click', handleClick)
+</script>
+<div class="p-4 rounded-[12px] cursor-pointer hover:bg-black-25" id={`test-card`} data-type={email}>
+    <div class="text-base font-bold">{name}</div>
     <div class="text-sm text-black-50">{email}</div>
 </div>
